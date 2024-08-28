@@ -274,6 +274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4352807529153243487, guid: d494ff6be9db8a24f87b4cdfd4f3bdea, type: 3}
+  bulletPrefab2: {fileID: 4352807529153243487, guid: 8fc43a3f466e5f7429331e8eb0b2a754, type: 3}
+  bulletPrefab3: {fileID: 4352807529153243487, guid: 50e28bd8533d46b479e6cef416bda06b, type: 3}
   muzzlePoint: {fileID: 823431526}
   bulletTime: 0
   remainTime: 0
@@ -400,8 +402,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.15712878, y: 0.018365845, z: -0.0029188409, w: -0.98740304}
-  m_LocalPosition: {x: 0.30515814, y: 3.5645313, z: -7.7354355}
+  m_LocalRotation: {x: -0.11322671, y: 0.49228972, z: -0.06475731, w: -0.86060274}
+  m_LocalPosition: {x: 7.4057837, y: 4.2344, z: 0.98425007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

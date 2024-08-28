@@ -8,7 +8,7 @@ public class PooledObject : MonoBehaviour
     public ObjectPool returnPool;
     // 빌려줬던 총알을 돌려받는데까지 걸리는 시간
     [SerializeField] float returnTime = 5;
-    [SerializeField] private float curTime;
+    private float curTime;
 
     private void OnEnable()
     {

@@ -5,7 +5,8 @@ using UnityEngine;
 public class TankMove : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
-    [SerializeField] float rotateSpeed;
+    //[SerializeField] float rotateSpeed;
+    [SerializeField] float rate;
 
     private void Update()
     {
@@ -17,14 +18,15 @@ public class TankMove : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 moveDir = new Vector3(x,0,z);
+        Vector3 moveDir = new Vector3(x, 0, z);
+        if (moveDir == Vector3.zero)
+            return;
 
-        if (moveDir.magnitude > 1 ) 
-        {
-            moveDir.Normalize();
-        }
-        transform.Translate(moveDir.normalized*moveSpeed*Time.deltaTime,Space.World);
+        transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime, Space.World);
 
-        transform.Rotate(Vector3.up,rotateSpeed*Time.deltaTime);
+        Quaternion lookRot = Quaternion.LookRotation(moveDir);
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRot, rate * Time.deltaTime);
+        //transform.Rotate(Vector3.up, x * rotateSpeed * Time.deltaTime, Space.World);
+
     }
 }

@@ -9,10 +9,16 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.forward*Speed*Time.deltaTime,Space.Self);
+        BulletDestroy();
     }
 
     public void SetSpeed(float speed)
     {
         this.Speed = speed;
+    }
+
+    public void BulletDestroy() 
+    {
+        Destroy(gameObject, 3f);
     }
 }

@@ -21,6 +21,7 @@ public class ObjectPool : MonoBehaviour
             instance.gameObject.SetActive(false);
             // 생성된 총알 프리팹을 부모쪽으로 이동
             instance.transform.parent = transform;
+            // 반납할때 돌아와야 하는 곳은 여기
             instance.returnPool = this;
             pool.Add(instance);
         }
@@ -32,6 +33,7 @@ public class ObjectPool : MonoBehaviour
         if (pool.Count > 0)
         {
             // pool에 만들어져 있는 총알을 전부 PooledObject instance 에 가져온다.
+            // 가장 마지막의 것을 꺼내자
             PooledObject instance = pool[pool.Count - 1];
             // 이런 위치에
             instance.transform.position = position;
@@ -39,9 +41,12 @@ public class ObjectPool : MonoBehaviour
             instance.transform.rotation = rotation;
             // 다 빼놓은 리스트 부모 오브젝트 쪽에 null을 넣어준다
             instance.transform.parent = null;
+            // 반납할때 돌아와야 하는 곳은 여기
             instance.returnPool = this;
+
             // 총알을 OFF 해놨던 것을 ON 켜둔다
             instance.gameObject.SetActive(true);
+            
 
             pool.RemoveAt(pool.Count - 1);
 
@@ -50,15 +55,21 @@ public class ObjectPool : MonoBehaviour
         else 
         {
             PooledObject instance = Instantiate(prefab,position,rotation);
+            // 반납할때 돌아와야 하는 곳은 여기
+            // 새로 만든 놈들도 여기에 반납되게 만듬
             instance.returnPool = this;
             return instance;
         }
     }
 
+    // 반납하기
     public void ReturnPool(PooledObject instance) 
     {
         instance.gameObject.SetActive(false);
+        // 반납할때도 부모를 이동
         instance.transform.parent = transform;
+        // pool에 보관
         pool.Add(instance);
+
     }
 }

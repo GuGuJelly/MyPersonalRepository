@@ -9,7 +9,8 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         transform.Translate(Vector3.forward*Speed*Time.deltaTime,Space.Self);
-        BulletDestroy();
+        // 반납이니까 삭제시키면 안된다
+        // BulletDestroy();
     }
 
     public void SetSpeed(float speed)
@@ -17,8 +18,8 @@ public class Bullet : MonoBehaviour
         this.Speed = speed;
     }
 
-    public void BulletDestroy() 
-    {
-        Destroy(gameObject, 3f);
-    }
+    //public void BulletDestroy() 
+    //{
+    //    Destroy(gameObject, 3f);
+    //}
 }

@@ -273,11 +273,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fbcb518509b774eb5615e3692df1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4352807529153243487, guid: d494ff6be9db8a24f87b4cdfd4f3bdea, type: 3}
-  bulletPrefab2: {fileID: 4352807529153243487, guid: 8fc43a3f466e5f7429331e8eb0b2a754, type: 3}
-  bulletPrefab3: {fileID: 4352807529153243487, guid: 50e28bd8533d46b479e6cef416bda06b, type: 3}
+  bulletPool: {fileID: 786957969}
   muzzlePoint: {fileID: 823431526}
-  bulletTime: 0
+  bulletTime: 1
   remainTime: 0
   bulletSpeed: 5.97
 --- !u!114 &786957969

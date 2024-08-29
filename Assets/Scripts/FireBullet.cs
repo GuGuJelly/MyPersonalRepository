@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FireBullet : MonoBehaviour
 {
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] GameObject bulletPrefab2;
-    [SerializeField] GameObject bulletPrefab3;
+    //[SerializeField] GameObject bulletPrefab;
+    //[SerializeField] GameObject bulletPrefab2;
+    //[SerializeField] GameObject bulletPrefab3;
+    [SerializeField] ObjectPool bulletPool;
     [SerializeField] Transform muzzlePoint;
 
     [SerializeField] float bulletTime;
@@ -24,42 +25,20 @@ public class FireBullet : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetButtonDown("Fire1"))
         {
-            GameObject instance = Instantiate(bulletPrefab, muzzlePoint.position, muzzlePoint.rotation);
-            Bullet bullet = instance.GetComponent<Bullet>();
             Fire();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            GameObject instance = Instantiate(bulletPrefab2, muzzlePoint.position, muzzlePoint.rotation);
-            Bullet bullet = instance.GetComponent<Bullet>();
-            Fire2();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            GameObject instance = Instantiate(bulletPrefab3, muzzlePoint.position, muzzlePoint.rotation);
-            Bullet bullet = instance.GetComponent<Bullet>();
-            Fire3();
         }
     }
 
     public void Fire()
     {
-        
+        PooledObject instance = bulletPool.GetPool(muzzlePoint.position, muzzlePoint.rotation);
+        Bullet bullet = instance.GetComponent<Bullet>();
         bullet.SetSpeed(bulletSpeed);
     }
 
-    public void Fire2()
-    {
-        
-        bullet.SetSpeed(bulletSpeed);
-    }
-
-    public void Fire3()
-    {
-        bullet.SetSpeed(bulletSpeed);
-    }
+    
 
 
 }
